@@ -1,0 +1,278 @@
+gspemgspem_homepage:
+    path:     /
+    defaults: { _controller: GSPEMGSPEMBundle:Default:index }
+gspemgspem_load_twig:
+    path:     /load/{template}
+    defaults: { _controller: GSPEMGSPEMBundle:Default:loadTwig }
+
+#GETS
+get_users:
+    path:     /getusers
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:getUsers}
+get_materiales:
+    path:     /getmateriales
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:getMateriales }
+get_sitios:
+    path:     /getsitios
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:getSitios }
+get_contratistas:
+    path:     /getcontratistas
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:getContratistas }
+
+save_contratistas:
+    path:     /savecontratistas
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:saveContratisa }
+
+
+
+
+get_materiales_type:
+    path:     /getmaterialestype
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:getMaterialesType }
+get_sitios_type:
+    path:     /getmaterialestype
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:getMaterialesType }
+
+get_profile:
+    path:     /getprofile
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:getUserProfile}
+
+get_tareas:
+    path:     /gettareas
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:getTareas}
+
+get_tareas_tecnico:
+    path:     /gettareastecnico
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:getTareasByTec}
+
+set_tarea_estado:
+    path:     /settareaestado
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:setTareaState}
+get_perfiles:
+    path:     /get_perfiles
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:getPerfiles}
+
+set_perfiles:
+    path:     /set_perfiles
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:saveProfile}
+delete_perfiles:
+    path:     /delete_perfil
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:deletePerfil}
+
+
+
+
+get_stock:
+    path:     /get_stock
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getMaterialesStock}
+
+get_stock_user:
+    path:     /get_stock_user
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getMaterialesStockByUser}
+
+get_stock_contratista:
+    path:     /get_stock_contratista
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getStockByContratista}
+
+get_stock_user_custom:
+    path:     /get_stock_user_custom
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getMaterialesStockByUserCustom}
+get_stock_users:
+    path:     /get_all_stock_users
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getMaterialesStockFromTecnicos}
+
+get_stock_contratistas:
+    path:     /get_all_stock_contratistas
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getAllStockContratistas}
+
+get_stock_sitios:
+    path:     /get_all_stock_sitios
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getAllStockSiteCustom}
+
+
+
+get_stock_sitio_custom:
+    path:     /get_stock_sitio_custom
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getMaterialesStockBySiteCustom}
+
+get_report_movs:
+    path:     /get_report_movs
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getAllMovimientos}
+
+
+
+set_stock:
+    path:     /set_stock
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:setStock}
+set_stock_user:
+    path:     /set_stock_user
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:setStockUser}
+set_stock_sitio:
+    path:     /set_stock_sitio
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:setStockSitio}
+
+
+
+set_stock_mov_tec:
+    path:     /set_stock_mov_tec
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:setStockToTec}
+get_mov_pend:
+    path:     /get_mov_pend
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getMovimientosPendientes}
+
+get_mov_pend_items:
+    path:     /get_mov_pend_items
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:getMovimientosPendientesItems}
+aceptar_mov_pend:
+    path:     /aceptar_mov_pend
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:aceptarMovPendientes}
+rechazar_mov_pend:
+    path:     /rechazar_mov_pend
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Stock:rechazarMovPendientes}
+
+
+#POST SAVE
+
+save_materiales:
+    path:     /savemateriales
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:saveMateriales }
+save_sitios:
+    path:     /savesitios
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:saveSitios }
+
+save_materiales_type:
+    path:     /savematerialestype
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:saveMaterialesType }
+
+save_sitios_type:
+    path:     /savesitiostype
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:saveSitiosType }
+
+save_users:
+    path:     /saveusers
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:setUser }
+
+save_users_state:
+    path:     /saveusersstate
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:setUserState}
+
+save_tarea:
+    path:     /savetarea
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:saveTarea}
+
+#POST DELETE
+
+delete_materiales:
+    path:     /deletmateriales
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:deleteMaterial }
+delete_usuario:
+    path:     /deleteusuario
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:deleteUsuario }
+
+
+delete_sitios:
+    path:     /deletsitios
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:deleteSitios }
+
+
+delete_materiales_type:
+    path:     /deletematerialestype
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:deleteMaterialType }
+
+delete_sitios_type:
+    path:     /deletesitiostype
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:deleteSitiosType }
+delete_tarea:
+    path:     /delete_tarea
+    options:
+        expose: true
+    defaults: { _controller: GSPEMGSPEMBundle:Default:deleteTarea}
+
+
+

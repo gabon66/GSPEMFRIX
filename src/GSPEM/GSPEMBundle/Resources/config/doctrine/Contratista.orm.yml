@@ -1,0 +1,24 @@
+GSPEM\GSPEMBundle\Entity\Contratista:
+    type: entity
+    table: contratistas
+    repositoryClass: GSPEM\GSPEMBundle\Repository\ContratistaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+            name:
+                type: string
+                column: name
+            descript:
+                type: string
+                column: descript
+            supervisor1:
+                type: text
+            supervisor2:
+                type: text
+            supervisor3:
+                type: text
+    lifecycleCallbacks: {  }

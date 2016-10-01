@@ -1,0 +1,146 @@
+<div class="row">
+
+    <!--<div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Seleccione Técnico: <small></small></h2>
+                <div class="form-group has-success has-feedback">
+                    <select  class="form-control" name="typematerial" id="mySelect"
+                             ng-options="tecnico.name  for tecnico in tecnicos track by tecnico.id"
+                             ng-model="tecnicotarea"></select>
+                </div>
+            </div>
+
+
+        </div>
+    </div>-->
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Stock Maestro <small></small></h2>
+                <div class="clearfix">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                        <div class="input-group col-lg-4 pull-right">
+                            <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <input type="text" ng-model="filtromaterial"class="form-control" id="exampleInputAmount" placeholder="Nombre">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="x_content" style="height:  300px ;overflow: auto">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><a ng-click="sortBy('id')">ID <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th>Ref.</th>
+                        <th><a ng-click="sortBy('name')"> Nombre <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('stock')"> Stock Actual <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th>Saliente</th>
+                        <th>Operaciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in stock | filter:{name:filtromaterial} | orderBy:propertyName:reverse">
+                        <th>{{ $index +1 }}</th>
+                        <td>{{ item.idCustom }}</td>
+                        <td>
+                            <button class="btn btn-sm" ng-style="{'background-color':item.referencia.ref1}"></button>
+                            <button class="btn btn-sm" ng-style="{'background-color':item.referencia.ref2}"></button>
+                        </td>
+                        <td>{{ item.name | limitTo:8 }}</td>
+
+
+                        <!-- <td style="text-align: right">{{ item.stock }}</td>-->
+
+                        <td style="text-align: right" ng-class="{danger: parseInt(item.stock) < parseInt(item.umbralmin)}">
+                            <i ng-show="parseInt(item.stock) < parseInt(item.umbralmin)"  class="fa fa-exclamation" aria-hidden="true"></i>
+                            {{ item.stock }}</td>
+
+                        <td style="text-align: right">
+                            <input class="input-group-sm" ng-model="item.cant" type="number" style="width: 60px;height: 22px;text-align: right" placeholder="1" />
+                        </td>
+                        <td ng-if="!item.new_stock" >
+                            <a  ng-if="item.stock>0" class="btn btn-sm btn-success " ng-click="setStock(item)" ><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a>
+                            <a  ng-if="item.showcancel"  class="btn btn-sm btn-warning " ng-click="cancelStock(item)" ><i class="fa fa-ban" aria-hidden="true"></i>
+                            </a>
+
+                        </td>
+                        <td ng-if="item.new_stock" >
+                            <a  ng-if="item.stock>0"  class="btn btn-sm btn-warning " ng-click="setStock(item)" ><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a>
+                            <a  class="btn btn-sm btn-warning " ng-click="cancelStock(item)" ><i class="fa fa-ban" aria-hidden="true"></i>
+                            </a>
+                        </td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="row">
+                    <div class="col-lg-3"><h2>Stock Tecnico Pendiente<small></small></h2></div>
+                    <div class="col-lg-4">
+                        <div class="form-group has-success has-feedback">
+                            <select  class="form-control" name="typematerial" id="mySelect"
+                                     ng-options="tecnico.name  for tecnico in tecnicos track by tecnico.id"
+                                     ng-model="tecnicotarea"></select>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-5 pull-right">
+                        <div class="form-group">
+                            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                            <div class="input-group col-lg-8 pull-right">
+                                <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                                <input type="text" ng-model="filtrostockpend"class="form-control" id="exampleInputAmount" placeholder="Nombre">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="x_content" style="height:  50% ;overflow: auto">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Stock</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in stockPendiente | filter:{name:filtrostockpend}">
+                        <th>{{ $index +1 }}</th>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.name | limitTo:8 }}</td>
+                        <td style="text-align: right">
+                            <a  class="btn btn-sm btn-success " style="visibility: hidden" ng-click="setStock(item)" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                            </a>{{ item.stock }}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="x_content">
+                <a ng-show="stockPendiente.length > 0" class="btn btn-success pull-right" ng-click="confirmar()">Confirmar</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

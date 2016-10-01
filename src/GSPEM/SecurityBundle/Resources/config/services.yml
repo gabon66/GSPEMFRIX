@@ -1,0 +1,4 @@
+services:
+#    gspem_security.example:
+#        class: GSPEM\SecurityBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

@@ -1,0 +1,59 @@
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Usuarios <small></small></h2>
+                <div class="clearfix">
+
+                    <a  ng-click="new(null,'newUser.html','ModalNewUserCtrl')" class="btn btn-primary pull-right"><i class="fa fa-plus"></i></a></div>
+
+            </div>
+            <div class="x_content">
+
+                <table class="table table-striped" >
+
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><a ng-click="sortBy('name')"> Nombre / Apellido <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('username')"> Username <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+
+                        <th><a ng-click="sortBy('mail')"> Mail <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('contratista')"> Contratista <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th>Perfil</th>
+                        <th>Estado</th>
+                        <th>Opciones</th>
+
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <tr  ng-repeat="user in users | orderBy:propertyName:reverse">
+                        <td>{{ $index +1 }}</td>
+                        <td>{{ user.name}} - {{ user.lastName}}</td>
+                        <td>{{ user.username}}</td>
+
+                        <td>{{ user.mail}}</td>
+                        <td>{{ user.contratista }}</td>
+                        <td> {{user.profilename}}</td>
+
+
+                        <td ng-if="user.disabled==false"><i class="fa fa-thumbs-up" style="color: green" aria-hidden="true"></i></td>
+                        <td ng-if="user.disabled==true"><i class="fa fa-thumbs-down"  style="color: red" aria-hidden="true"></i></td>
+
+                        <td><a  ng-click="new(user,'newUser.html','ModalNewUserCtrl')" class="btn btn-default btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                            <a  ng-click="chaneStateUser(user.id , user.disabled)" class="btn btn-default btn-sm">
+                                <i ng-if="user.disabled==false" class="fa fa-thumbs-o-down" style="color: red" aria-hidden="true"></i>
+                                <i ng-if="user.disabled==true" class="fa fa-thumbs-o-up" style="color: green" aria-hidden="true"></i>
+                                <a  ng-click="deleteUser(user.id)" class="btn btn-default btn-sm"><i class="fa fa-remove" aria-hidden="true"></i></a>
+                            </a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

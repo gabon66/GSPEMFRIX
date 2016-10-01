@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Tareas <small></small></h2>
+                <div class="clearfix"><a  ng-click="new(null,'tareas_form.html','ModelTareaCtrl')" class="btn btn-primary pull-right"><i class="fa fa-plus"></i></a></div>
+
+            </div>
+            <div class="x_content">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Inicio</th>
+                        <th>Fin</th>
+                        <th>Estado</th>
+                        <th>Tecnico</th>
+
+                        <th>Sitio</th>
+                        <th>Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="tarea in tareas">
+                        <th>{{ $index +1 }}</th>
+                        <td>{{ tarea.name }}</td>
+                        <td>{{ tarea.inicio | date:'medium'  }}</td>
+                        <td>{{ tarea.fin | date:'medium'  }}</td>
+
+                        <td ng-if="tarea.estado==0">Pendiente</td>
+                        <td ng-if="tarea.estado==1">En Proceso</td>
+                        <td ng-if="tarea.estado==2">Finalizada</td>
+                        <td>{{ tarea.tecnico }}</td>
+                        <td>{{ tarea.sitio }}</td>
+
+                        <td>
+                            <a  class="btn btn-sm btn-success" ng-click="new(tarea,'tareas_form.html','ModelTareaCtrl')" ><i class="fa fa-edit"></i> </a>
+                            <a  class="btn btn-sm btn-warning" ng-click="deleteTarea(tarea.id)" ><i class="fa fa-remove"></i> </a>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

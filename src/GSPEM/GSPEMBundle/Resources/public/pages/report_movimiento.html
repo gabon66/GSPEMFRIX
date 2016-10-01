@@ -1,0 +1,71 @@
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Movimientos de Stock <small></small> <i ng-show="cargando==true" class="fa fa-refresh fa-spin fa-1x fa-fw"></i>
+                    <span class="sr-only">Loading...</span></h2>
+                <div class="clearfix">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                        <div class="input-group col-lg-4 pull-right">
+                            <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <input type="text" ng-model="filtromaterial"class="form-control" id="exampleInputAmount" placeholder="Origen / Destino / Inicio / Fin">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="x_content" style="height:  60% ;overflow: auto" id="exportable">
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><a ng-click="sortBy('origen')"> Origen <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('tecnico')"> Destino <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('inicio')"> Inicio <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('fin')"> Fin <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('state')"> Estado <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('type')"> Tipo <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th>Items</th>
+                        <th>Nota</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="mov in movs | filter:filtromaterial  | orderBy:propertyName:reverse">
+                        <th>{{ $index +1 }}</th>
+                        <td>{{ mov.origen }}</td>
+                        <td>{{ mov.tecnico }}</td>
+                        <td>{{ mov.inicio }}</td>
+                        <td>{{ mov.fin }}</td>
+                        <td ng-if="mov.state==0">Pendiente</td>
+                        <td ng-if="mov.state==1">Aceptado</td>
+                        <td ng-if="mov.state==2">Rechazado</td>
+                        <td ng-if="mov.state==3">Aceptado Parcial</td>
+                        <td ng-if="mov.type==1">Maestro => Técnico</td>
+                        <td ng-if="mov.type==2">Técnico => Técnico</td>
+                        <td ng-if="mov.type==3">Técnico => Sitio</td>
+
+                        <td>
+                            <a ng-click="showItems(mov.items)" class="btn btn-success btn-sm"><i class="fa fa-list" aria-hidden="true"></i></a>
+
+                        </td>
+                        <td>
+                            <a ng-show="mov.nota.length > 0" ng-click="showNota(mov.nota)" class="btn btn-success btn-sm"><i class="fa fa-commenting-o" aria-hidden="true"></i></a>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="x_content">
+                <a class="btn btn-success pull-right" ng-click="exportar()">Exportar</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

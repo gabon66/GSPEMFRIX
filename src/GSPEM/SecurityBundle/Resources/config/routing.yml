@@ -1,0 +1,9 @@
+login:
+    path:     /login
+    defaults: { _controller: GSPEMSecurityBundle:Default:login }
+login_check:
+    path:     /login_check
+    defaults: { _controller: GSPEMSecurityBundle:Default:loginCheck }
+logout:
+    path:     /logout
+    defaults: { _controller: GSPEMSecurityBundle:Default:logout }

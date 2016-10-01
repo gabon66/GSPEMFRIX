@@ -1,0 +1,11 @@
+GSPEM\GSPEMBundle\Entity\MovStockSit:
+    type: entity
+    table: null
+    repositoryClass: GSPEM\GSPEMBundle\Repository\MovStockSitRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }

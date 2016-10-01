@@ -1,0 +1,16 @@
+GSPEM\GSPEMBundle\Entity\StockMaestro:
+    type: entity
+    table: stock_maestro
+    repositoryClass: GSPEM\GSPEMBundle\Repository\StockMaestroRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        material:
+            type: integer
+        cant:
+            type: integer
+    lifecycleCallbacks: {  }

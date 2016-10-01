@@ -1,0 +1,50 @@
+<div class="row">
+
+    <div class="col-md-9 col-sm-9 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Mi Stock <small></small></h2>
+                <div class="clearfix">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                        <div class="input-group col-lg-4 pull-right">
+                            <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <input type="text" ng-model="filtromaterial"class="form-control" id="exampleInputAmount" placeholder="ID / Nombre">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="x_content" style="height:  60% ;overflow: auto">
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><a ng-click="sortBy('id')">ID <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <td>Referencia</td>
+                        <th><a ng-click="sortBy('name')"> Nombre <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('stock')"> Stock Actual <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in stock | filter:filtromaterial | orderBy:propertyName:reverse">
+                        <th>{{ $index +1 }}</th>
+                        <td>{{ item.idCustom }}</td>
+                        <td>
+                            <button class="btn btn-sm" ng-style="{'background-color':item.referencia.ref1}"></button>
+                            <button class="btn btn-sm" ng-style="{'background-color':item.referencia.ref2}"></button>
+                        </td>
+                        <td>{{ item.name }}</td>
+                        <td style="text-align: right">{{ item.stock }}</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

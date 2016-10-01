@@ -1,0 +1,18 @@
+GSPEM\GSPEMBundle\Entity\StockSitio:
+    type: entity
+    table: stock_sitio
+    repositoryClass: GSPEM\GSPEMBundle\Repository\StockSitioRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+            sitio:
+                type: integer
+            material:
+                type: integer
+            cant:
+                type: integer
+    lifecycleCallbacks: {  }

@@ -1,0 +1,20 @@
+GSPEM\GSPEMBundle\Entity\StockItemsMov:
+    type: entity
+    table: stock_items_mov
+    repositoryClass: GSPEM\GSPEMBundle\Repository\SockItemsMovRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+            material:
+                type: integer
+            mov:
+                type: integer
+            cant:
+                type: integer
+            rechazado:
+                type: integer
+    lifecycleCallbacks: {  }

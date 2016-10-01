@@ -1,0 +1,54 @@
+{% extends '::base.html.twig' %}
+
+    {% block stylesheets %}
+
+        <link href="{{ asset('bower_components/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/gentelella/vendors/font-awesome/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/gentelella/vendors/iCheck/skins/flat/green.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/gentelella/production/css/maps/jquery-jvectormap-2.0.3.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/gentelella/build/css/custom.min.css') }}" type="text/css" rel="stylesheet" />
+
+
+    {% endblock %}
+
+
+{% block body %}
+
+<body style="background-image: url({{ asset('images/cocina_bk.jpg') }}) ; background-repeat: no-repeat ;background-size: cover">
+
+    <div class="container" >
+        </br></br></br></br>
+
+
+
+        <div class="col-lg-4">
+
+        </div>
+        <div class="jumbotron col-lg-4">
+
+
+            {% if error %}
+                <div class="error">Error en usuario o clave</div>
+            {% endif %}
+
+
+            <form class="form-group-sm form-horizontal text-center " action="{{ path('login_check') }}" method="post">
+                <div class="form-group">
+                    <h2><span class="fa fa-sitemap" aria-hidden="true"></span> Gestión Puesta en Marcha</h2>
+
+                <input class="form-control input-sm" type="text" id="username" name="_username" value="{{ last_username }}" />
+
+                <input  class="form-control input-sm" type="password" id="password" name="_password" />
+                    </br>
+                <button type="submit" class="btn btn-success">Entrar</button>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-lg-4">
+
+        </div>
+    </div>
+</body>
+{% endblock %}

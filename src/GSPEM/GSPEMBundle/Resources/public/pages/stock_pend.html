@@ -1,0 +1,70 @@
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Stock Pendiente para aceptar <small ng-if="movs.length==0">No tiene envios de stock para ver por el momento</small></h2>
+                <div class="clearfix">
+                </div>
+            </div>
+            <div class="x_content">
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-6 col-sm-6 col-xs-12" ng-repeat="mov in movs" >
+        <div class="x_panel">
+            <div class="x_title">
+                <h5>Movimiento de stock creado el  {{mov.inicio | date:'MM/dd/yyyy' }} </h5>
+                <div class="clearfix">
+                </div>
+            </div>
+            <div class="x_content" style="height:  250px ;overflow: auto">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Ref.</th>
+                        <th>Nombre</th>
+                        <th>Entrante</th>
+                        <th>Rechazo </th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in mov.items">
+                        <th>{{ $index +1 }}</th>
+                        <td>{{ item.idCustom }}</td>
+                        <td>
+                            <button class="btn btn-sm" ng-style="{'background-color':item.referencia.ref1}"></button>
+                            <button class="btn btn-sm" ng-style="{'background-color':item.referencia.ref2}"></button>
+                        </td>
+                        <td>{{ item.name | limitTo:8 }}</td>
+                        <td style="text-align: right">{{ item.cant }}</td>
+                        <td>
+                            <input class="input-group-sm " ng-model="item.cantrechazo" type="number" style="width: 60px;height: 22px;text-align: right" placeholder="0" />
+                            <a   ng-if="item.cant_ori" class="btn btn-sm btn-warning pull-right" ng-click="cancelPend(mov.id,item)" ><i class="fa fa-ban" aria-hidden="true"></i>
+                            </a>
+                            <a  style="padding-left: 10px" class="btn btn-sm btn-success pull-right" ng-click="setStockRechazo(mov.id,item)" ><i class="fa fa-check" aria-hidden="true"></i>
+                            </a>
+
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <a class="btn btn-warning pull-left" ng-click="rechazar(mov.id)">Rechazar todo</a>
+            <a class="btn btn-success pull-right" ng-click="aceptar(mov.id,mov.items)">Aceptar</a>
+        </div>
+    </div>
+
+
+</div>
+
+

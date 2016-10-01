@@ -1,0 +1,18 @@
+GSPEM\GSPEMBundle\Entity\SitioType:
+    type: entity
+    table: sitios_type
+    repositoryClass: GSPEM\GSPEMBundle\Repository\SitioTypeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            column: id
+            generator:
+                strategy: AUTO
+    fields:
+            name:
+                type: string
+                column: name
+            descript:
+                type: string
+    lifecycleCallbacks: {  }

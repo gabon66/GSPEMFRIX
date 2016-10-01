@@ -1,0 +1,85 @@
+<div class="row">
+ <div class="col-md-6 col-sm-6 col-xs-12">
+
+  <div class="panel panel-success">
+   <div class="panel-heading">
+    <h3>Mi datos</h3>
+   </div>
+   <div class="panel-body">
+    <div class="form-group has-success has-feedback">
+     <label>Nombre(*)</label>
+     <input
+             ng-model="nombre"
+             class="form-control"
+             placeholder="Nombre">
+    </div>
+
+    <div class="form-group has-success has-feedback">
+     <label>Apellido</label>
+     <input
+             ng-model="apellido"
+             class="form-control"
+             placeholder="Apellido">
+    </div>
+
+    <div class="form-group has-success has-feedback">
+     <label>eMail(*)</label>
+     <input
+             ng-model="mail"
+             class="form-control"
+             placeholder="eMail">
+    </div>
+
+    <div class="form-group has-success has-feedback">
+     <label>Usuario(*)</label>
+     <input
+             ng-model="user"
+             class="form-control"
+             placeholder="Usuario">
+    </div>
+
+    <div class="form-group has-success has-feedback">
+     <label>Clave(*)</label>
+     <div class="form-inline">
+       <a ng-click="editPass()" class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+      <input
+             type="password"
+             ng-model="pass"
+             class="form-control"
+             placeholder="Clave" ng-disabled="passedite">
+      </div>
+     </div>
+    <div class="form-group has-success has-feedback">
+     <label>Telefono</label>
+     <input
+             ng-model="phone"
+             class="form-control"
+             placeholder="Telefono">
+    </div>
+
+
+    <div ng-show="showperfiledit==true" class="form-group has-success has-feedback">
+     <label>Perfil :</label>
+     <select  class="form-control" name="typematerial" id="mySelect"
+              ng-options="perfil.name for perfil in perfiles track by perfil.id"
+
+              ng-model="profileselected"></select>
+
+    </div>
+
+    </div>
+   </div>
+    <div class="panel-footer">
+      <a class="btn btn-success" ng-click="saveUser()">Guardar</a>
+    </div>
+  </div>
+
+
+
+ </div>
+
+</div>
+
+
+

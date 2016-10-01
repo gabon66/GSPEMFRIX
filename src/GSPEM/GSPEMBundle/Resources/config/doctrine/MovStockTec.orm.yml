@@ -1,0 +1,26 @@
+GSPEM\GSPEMBundle\Entity\MovStockTec:
+    type: entity
+    table: movimiento_stock_tecnico
+    repositoryClass: GSPEM\GSPEMBundle\Repository\MovStockTecRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+            tecnico:
+                type: integer
+            inicio:
+                type: datetime
+            fin:
+                type: datetime
+            state:
+                type: integer
+            origen:
+                type: integer
+            nota:
+                type: string
+            type:
+                type: integer
+    lifecycleCallbacks: {  }

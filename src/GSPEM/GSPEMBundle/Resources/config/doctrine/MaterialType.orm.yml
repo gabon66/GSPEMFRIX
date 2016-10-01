@@ -1,0 +1,18 @@
+GSPEM\GSPEMBundle\Entity\MaterialType:
+    type: entity
+    table: materiales_type
+    repositoryClass: GSPEM\GSPEMBundle\Repository\MaterialTypeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            column: id
+            generator:
+                strategy: AUTO
+    fields:
+            name:
+                type: string
+                column: name
+            descript:
+                type: string
+    lifecycleCallbacks: {  }

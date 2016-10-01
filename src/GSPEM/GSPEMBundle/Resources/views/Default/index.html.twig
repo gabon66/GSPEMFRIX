@@ -1,0 +1,167 @@
+{# app/Resources/views/base.html.twig #}
+<html ng-app='AppGSPEM'>
+<head>
+    <title> GSPEM</title>
+    {# ... #}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    {% block stylesheets %}
+        <link href="{{ asset('bower_components/gentelella/vendors/bootstrap/dist/css_new/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/gentelella/vendors/font-awesome/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/gentelella/vendors/iCheck/skins/flat/green.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/gentelella/production/css/maps/jquery-jvectormap-2.0.3.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/gentelella/build/css/custom.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bower_components/angular-toastr/dist/angular-toastr.css') }}" type="text/css" rel="stylesheet" />
+
+        <link href="{{ asset('bower_components/angular-google-places-autocomplete/dist/autocomplete.min.css') }}" type="text/css" rel="stylesheet" />
+<style type="text/css">
+.pac-container {
+    z-index: 100000;
+}
+</style>
+
+
+    {% endblock %}
+
+<body class="nav-md" ng-controller='mainController'>
+<div class="container body">
+<div class="main_container">
+    <div class="col-md-3 left_col">
+        {% include 'GSPEMGSPEMBundle:Default:menu.html.twig' %}
+    </div>
+
+    <div class="top_nav">
+        <div class="nav_menu">
+            <nav class="" role="navigation">
+                <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ asset('bundles/gspemgspem/images/servicioa-tcnico.png')  }}" alt="">
+                            {% if user== "admin" %}
+                                Admin
+                            {% else %}
+                                {{ app.user.name }} {{ app.user.lastname }}
+                            {% endif %}
+
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                            <li><a href="#/perfil"> Perfil</a></li>
+                            <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out pull-right"></i> Salir</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="right_col" role="main" style="min-height: 600px">
+        <div id="main">
+            <!-- Aquí inyectamos las vistas -->
+            <div ng-view></div>
+        </div>
+    </div>
+
+    </div>
+    <footer>
+        <div class="pull-right">
+            GSPEM
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+</div>
+</div>
+
+
+</head>
+
+
+{% include 'GSPEMGSPEMBundle:Default:modals.html.twig' %}
+
+{% block javascripts %}
+
+
+    <script src="https://rawgithub.com/eligrey/FileSaver.js/master/FileSaver.js" type="text/javascript"></script>
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('bower_components/angular/angular.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bower_components/angular-animate/angular-animate.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bower_components/angular-route/angular-route.min.js') }}" type="text/javascript"></script>
+
+
+    <script src="{{ asset('bower_components/gentelella/vendors/jquery/dist/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/fastclick/lib/fastclick.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/nprogress/nprogress.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/Chart.js/dist/Chart.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/bernii/gauge.js/dist/gauge.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/iCheck/icheck.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/skycons/skycons.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bower_components/gentelella/vendors/Flot/jquery.flot.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/Flot/jquery.flot.pie.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/Flot/jquery.flot.time.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/vendors/Flot/jquery.flot.stack.js') }}" type="text/javascript"></script>
+    <!--<script src="{{ asset('bower_components/gentelella/vendors/Flot/jquery.flot.resize.js') }}" type="text/javascript"></script>
+-->
+
+
+
+    <script src="{{ asset('bower_components/gentelella/production/js/flot/jquery.flot.orderBars.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/production/js/flot/date.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/production/js/flot/jquery.flot.spline.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/production/js/flot/curvedLines.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bower_components/gentelella/production/js/maps/jquery-jvectormap-2.0.3.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/production/js/moment/moment.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/production/js/datepicker/daterangepicker.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/gentelella/build/js/custom.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bower_components/angular-bootstrap/ui-bootstrap.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/angular-bootstrap/ui-bootstrap-tpls.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bower_components/angular-toastr/dist/angular-toastr.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/angular-toastr/dist/angular-toastr.tpls.js') }}" type="text/javascript"></script>
+
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyCp_sQlhdJJUuaNg7Z4_Iocyip0KU0EAy4"></script>
+
+
+
+    <!-- AIzaSyD9Mc4KpDPBMtHXgyk5XcVzXyNumvckhjQ -->
+
+    <script src="{{ asset('bower_components/angular-google-places-autocomplete/dist/autocomplete.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{asset('bundles/gspemgspem/js/app.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/app_materiales.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/app_sitios.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/app_usuarios.js')}}"></script>
+
+    <script src="{{asset('bundles/gspemgspem/js/app_perfil.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/app_tareas.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/app_stock_maestro.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/app_stock_mov.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/app_stock_pend.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/app_stock_user.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/app_contratistas.js')}}"></script>
+
+
+    <script src="{{asset('bundles/gspemgspem/js/app_stock_mov_sitio.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/app_report.js')}}"></script>
+    <script src="{{asset('bundles/gspemgspem/js/directives/ngAutocomplete.js')}}"></script>
+
+
+
+{% endblock %}
+
+</body>
+</html>

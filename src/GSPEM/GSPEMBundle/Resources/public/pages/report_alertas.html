@@ -1,0 +1,45 @@
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Materiales Alertados <small></small></h2>
+                <div class="clearfix">
+                </div>
+
+            </div>
+            <div class="x_content" style="height:  60% ;overflow: auto" id="exportable">
+
+                <table class="table table-bordered warning">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><a ng-click="sortBy('idCustom')">ID <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('name')"> Nombre <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('descript')"> Descripción <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('stock')"> Stock Actual <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('umbralmin')"> Umbral Mínimo <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in stock | filter:{name:filtromaterial}" class="warning">
+                        <th>{{ $index +1 }}</th>
+                        <td>{{ item.idCustom }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.descript }}</td>
+                        <td>{{ item.stock }}</td>
+                        <td>{{ item.umbralmin }}</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="x_content">
+                <a class="btn btn-success pull-right" ng-click="exportar()">Exportar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+

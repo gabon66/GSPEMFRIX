@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Sitios <small></small></h2>
+                <div class="clearfix"><a  ng-click="new(null,'sitio_form.html','ModelNewSiteCtrl')" class="btn btn-primary pull-right"><i class="fa fa-plus"></i></a></div>
+
+            </div>
+
+
+            <div class="x_content">
+
+                <h3 ng-if="sitios.length==0" >No tiene sitios para mostrar</h3>
+
+                <table class="table" ng-if="sitios.length>0">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Descripción</th>
+                        <th>Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="sitio in sitios">
+                        <td class="col-md-1">{{ $index +1 }}</td>
+                        <td class="col-md-2">{{ sitio.name }} </td>
+                        <td class="col-md-4">{{ sitio.direccion }} </td>
+                        <td class="col-md-3">{{ sitio.descript }}</td>
+                        <td class="col-md-3">
+                               <a  class="btn btn-sm btn-success" ng-click="new(sitio,'sitio_form.html','ModelNewSiteCtrl')" ><i class="fa fa-edit"></i> </a>
+                                <a  class="btn btn-sm btn-warning" ng-click="deleteSitios(sitio.id)" ><i class="fa fa-remove"></i> </a>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

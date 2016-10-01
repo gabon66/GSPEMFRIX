@@ -1,0 +1,18 @@
+GSPEM\GSPEMBundle\Entity\Perfiles:
+    type: entity
+    table: perfiles
+    repositoryClass: GSPEM\GSPEMBundle\Repository\PerfilesRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+            name:
+                type: string
+            descript:
+                type: string
+            access:
+                type: text
+    lifecycleCallbacks: {  }

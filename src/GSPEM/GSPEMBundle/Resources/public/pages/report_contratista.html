@@ -1,0 +1,61 @@
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Stock por Contratista<small></small> <i ng-show="cargando==true" class="fa fa-refresh fa-spin fa-1x fa-fw"></i>
+                    <span class="sr-only">Loading...</span></h2>
+                <div class="clearfix">
+                    <div class="form-group has-success has-feedback">
+                        <!--<select  class="form-control" name="typematerial" id="mySelect"
+                                 ng-options="contratista.name for contratista in contratistas track by contratista.id"
+                                 ng-model="contratistaselected" ng-change="updateReportContratista()"></select>
+-->
+                        <select  ng-change="updateReportContratista()" class="form-control"  name="ngvalueselect" ng-model="contratistaselected" multiple>
+                            <option ng-repeat="contratista in contratistas" ng-value="contratista.id">{{contratista.name}}</option>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+            <div class="x_content" style="height:  60% ;overflow: auto" id="exportable">
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><a ng-click="sortBy('idCustom')">ID <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('name')"> Nombre <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+
+                        <th><a ng-click="sortBy('descript')"> Descripción <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('contratista')"> Contratista <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+
+                        <th><a ng-click="sortBy('stock')"> Stock Actual <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in stock | orderBy:propertyName:reverse ">
+                        <th>{{ $index +1 }}</th>
+                        <td>{{ item.idCustom }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.descript }}</td>
+                        <td>{{ item.contratista }} </td>
+
+                        <td style="text-align: right">{{ item.stock }}</td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="x_content">
+                <a class="btn btn-success pull-right" ng-click="exportar()">Exportar</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+

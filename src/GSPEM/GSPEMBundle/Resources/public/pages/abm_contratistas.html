@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Contratistas <small></small></h2>
+                <div class="clearfix"><a  ng-click="new(null)" class="btn btn-primary pull-right"><i class="fa fa-plus"></i></a></div>
+
+            </div>
+
+
+            <div class="x_content">
+                <h3 ng-if="contratistas.length==0"> Contratistas</h3>
+
+                <table class="table" ng-if="contratistas.length>0">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><a ng-click="sortBy('name')"> Nombre <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th>Descripción</th>
+                        <th>Supervisor 1</th>
+                        <th>Supervisor 2</th>
+                        <th>Supervisor 3</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="contratista in contratistas | orderBy:propertyName:reverse">
+                        <td class="col-md-1">{{ $index +1 }}</td>
+                        <td class="col-md-2">{{ contratista.name  }} </td>
+                        <td class="col-md-2">{{ contratista.descript }} </td>
+                        <td class="col-md-2">{{ contratista.supervisor1.name }} {{ contratista.supervisor1.apellido }}  </td>
+                        <td class="col-md-2">{{ contratista.supervisor2.name }} {{ contratista.supervisor2.apellido }}  </td>
+                        <td class="col-md-2">{{ contratista.supervisor3.name }} {{ contratista.supervisor3.apellido }}  </td>
+                        <td class="col-md-3">
+                               <a  class="btn btn-sm btn-success" ng-click="new(contratista)" ><i class="fa fa-edit"></i> </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

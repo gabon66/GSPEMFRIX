@@ -1,0 +1,574 @@
+{# app/Resources/views/base.html.twig #}
+{% verbatim %}
+<script type="text/ng-template" id="perfil_form.html">
+    <div class="modal-header">
+        <h3>Perfil</h3>
+    </div>
+    <div class="modal-body">
+        <fieldset>
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="name"
+                        class="form-control"
+                        placeholder="Nombre(*)">
+            </div>
+
+
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="descript"
+                        class="form-control"
+                        placeholder="Descripción(*)">
+            </div>
+            <hr>
+
+                       <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="perfiles_abm#home"><i class="fa fa-users"></i></a></li>
+                        <li><a data-toggle="tab" href="perfiles_abm#menu1"><i class="fa fa-map-marker"></i></a></li>
+                        <li><a data-toggle="tab" href="perfiles_abm#menu2"><i class="fa fa-home"></i></a></li>
+                        <li><a data-toggle="tab" href="perfiles_abm#menu3"><i class="fa fa-sitemap"></i></a></li>
+                        <li><a data-toggle="tab" href="perfiles_abm#menu4"><i class="fa fa-wrench"></i></a></li>
+                        <li><a data-toggle="tab" href="perfiles_abm#menu5"><i class="fa fa-area-chart"></i></a></li>
+                       </ul>
+
+                       <div class="tab-content">
+                         <div id="home" class="tab-pane fade in active">
+                           <h3><input ng-model="perfil.user.all" type="checkbox" value=""> Usuarios</h3>
+                            <div class="row">
+                                <div class="col-lg-4"><input ng-checked="perfil.user.all && perfil.user.abm"  ng-model="perfil.user.abm" type="checkbox" value=""> ABM Usuarios</div>
+
+                                <div class="col-lg-4"><input ng-checked="perfil.user.all && perfil.user.contratistas" ng-model="perfil.user.contratistas" type="checkbox" value=""> ABM Contratistas</div>
+
+                                <div class="col-lg-4"><input ng-checked="perfil.user.all && perfil.user.perfiles" ng-model="perfil.user.perfiles" type="checkbox" value=""> ABM Perfiles</div>
+                            </div>
+                         </div>
+                         <div id="menu1" class="tab-pane fade">
+                           <h3><input ng-model="perfil.sitios.all" type="checkbox" value=""> Sitios</h3>
+                           <div class="row">
+                            <div class="col-lg-6"><input ng-checked="perfil.sitios.all" ng-model="perfil.sitios.abm"type="checkbox" value=""> ABM Sitios</div>
+                           </div>
+                         </div>
+                         <div id="menu2" class="tab-pane fade">
+                           <h3><input ng-model="perfil.materiales.all" type="checkbox" value=""> Materiales</h3>
+                                <div class="row">
+                                    <div class="col-lg-6"><input ng-checked="perfil.materiales.all && perfil.materiales.abm_tipo" ng-model="perfil.materiales.abm_tipo" type="checkbox" value=""> ABM Tipo Materiales</div>
+                                    <div class="col-lg-6"><input ng-checked="perfil.materiales.all && perfil.materiales.abm" ng-model="perfil.materiales.abm" type="checkbox" value=""> ABM Materiales</div>
+                                </div>
+                         </div>
+                          <div id="menu3" class="tab-pane fade">
+                              <h3><input ng-model="perfil.oper.all" type="checkbox" value=""> Manejo de Stock</h3>
+                              <div class="row">
+                                <div class="col-lg-4"><input ng-checked="perfil.oper.all && perfil.oper.stock" ng-model="perfil.oper.stock" type="checkbox" value=""> Stock</div>
+                                <div class="col-lg-4"><input ng-checked="perfil.oper.all && perfil.oper.stock_to_tec" ng-model="perfil.oper.stock_to_tec" type="checkbox" value=""> Maestro a Técnico</div>
+                                <div class="col-lg-4"><input ng-checked="perfil.oper.all && perfil.oper.stock_tec_to_tec" ng-model="perfil.oper.stock_tec_to_tec" type="checkbox" value=""> Técnico a Técnico</div>
+                              </div>
+
+                            </div>
+                              <div id="menu4" class="tab-pane fade">
+                                <h3><input type="checkbox" value="" ng-model="perfil.opertec.all"> Operaciones</h3>
+                                    <div class="row">
+                                     <div class="col-lg-2"><input ng-checked="perfil.opertec.all && perfil.opertec.stock" ng-model="perfil.opertec.stock" type="checkbox" value=""> Stock</div>
+                                     <div class="col-lg-3"><input ng-checked="perfil.opertec.all && perfil.opertec.stoc_pend" ng-model="perfil.opertec.stoc_pend" type="checkbox" value=""> Aceptación de Stock</div>
+                                     <div class="col-lg-3"><input ng-checked="perfil.opertec.all && perfil.opertec.stoc_tec" ng-model="perfil.opertec.stoc_tec" type="checkbox" value=""> Stock a Técnico</div>
+                                     <div class="col-lg-3"><input ng-checked="perfil.opertec.all && perfil.opertec.stoc_sit" ng-model="perfil.opertec.stoc_sit" type="checkbox" value=""> Stock a Sitio</div>
+                                    </div>
+                                </div>
+                              <div id="menu5" class="tab-pane fade">
+                              <h3><input type="checkbox" value="" ng-model="perfil.reportes.all">  Reportes</h3>
+                                 <div class="row">
+                                    <div class="col-lg-3"><input ng-checked="perfil.reportes.all && perfil.reportes.stock_maestro" ng-model="perfil.reportes.stock_maestro" type="checkbox" value=""> Stock Maestro</div>
+                                    <div class="col-lg-3"><input ng-checked="perfil.reportes.all && perfil.reportes.stock_tec" ng-model="perfil.reportes.stock_tec" type="checkbox" value=""> Stock por Técnico</div>
+                                    <div class="col-lg-3"><input ng-checked="perfil.reportes.all && perfil.reportes.stock_sit" ng-model="perfil.reportes.stock_sit" type="checkbox" value=""> Stock por Sitio</div>
+                                    <div class="col-lg-3"><input ng-checked="perfil.reportes.all && perfil.reportes.stock_cont" ng-model="perfil.reportes.stock_cont" type="checkbox" value=""> Stock por Contratista</div>
+                                    <div class="col-lg-3"><input ng-checked="perfil.reportes.all && perfil.reportes.stock_mov" ng-model="perfil.reportes.stock_mov" type="checkbox" value=""> Movimientos de Stock</div>
+                                    <div class="col-lg-3"><input ng-checked="perfil.reportes.all && perfil.reportes.stock_alertas" ng-model="perfil.reportes.stock_alertas" type="checkbox" value=""> Alertas de Stock</div>
+
+                            </div>
+                       </div>
+            </div>
+
+
+        </fieldset>
+
+
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" ng-click="saveProfile()">Guardar</a>
+    </div>
+</script>
+
+<script type="text/ng-template" id="tareas_form.html">
+    <div class="modal-header">
+        <h3>Tarea</h3>
+    </div>
+    <div class="modal-body">
+        <fieldset>
+
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="name"
+                        class="form-control"
+                        placeholder="Nombre(*)">
+            </div>
+
+
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="descript"
+                        class="form-control"
+                        placeholder="Descripción(*)">
+            </div>
+
+
+            <div class="form-group has-success has-feedback">
+                <label>Técnico :</label>
+
+                <select  class="form-control" name="typematerial" id="mySelect"
+                 ng-options="tecnico.name for tecnico in tecnicos track by tecnico.id"
+
+                 ng-model="tecnicotarea"></select>
+
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <label>Sitio :</label>
+                <select  class="form-control" name="typematerial" id="mySelect"
+                 ng-options="sitio.name for sitio in sitios track by sitio.id"
+
+                 ng-model="sitiotarea"></select>
+            </div>
+
+        </fieldset>
+
+
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" ng-click="save()">Guardar</a>
+    </div>
+</script>
+<script type="text/ng-template" id="material_form.html">
+    <div class="modal-header">
+        <h3>Material</h3>
+    </div>
+    <div class="modal-body">
+        <fieldset>
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="id_custom"
+                        class="form-control"
+                        placeholder="ID">
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="name"
+                        class="form-control"
+                        placeholder="Nombre(*)">
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="descript"
+                        class="form-control"
+                        placeholder="Descripción(*)">
+            </div>
+
+
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="ubicacion"
+                        class="form-control"
+                        placeholder="Ubicación(*)">
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <label>Referencia Asignada :</label>
+
+                <button class="btn btn-sm" style="background-color: {{ referencia.ref1 }}"></button>
+                <button class="btn btn-sm" style="background-color: {{ referencia.ref2 }}"></button>
+                <br/>
+                    <label>Paleta de colores  :</label>
+                  <div class="btn-group">
+                      <a href class="btn btn-default" style="background-color: blue"  ng-click="setRef(1,'blue')" ui-exclusion-group='myButtons'></a>
+                      <a href class="btn btn-default" style="background-color: green" ng-click="setRef(1,'green')" ui-exclusion-group='myButtons'></a>
+                      <a href class="btn btn-default" style="background-color: black" ng-click="setRef(1,'black')" ui-exclusion-group='myButtons'></a>
+                  </div>
+
+                    <div class="btn-group">
+                      <a href class="btn btn-default" style="background-color: blue"  ng-click="setRef(2,'blue')" ui-exclusion-group='myButtons'></a>
+                      <a href class="btn btn-default" style="background-color: green" ng-click="setRef(2,'green')" ui-exclusion-group='myButtons'></a>
+                      <a href class="btn btn-default" style="background-color: black" ng-click="setRef(2,'black')" ui-exclusion-group='myButtons'></a>
+                  </div>
+
+                  <div class="btn-group">
+                      <a href class="btn btn-default" style="background-color: grey"  ng-click="clearRef()" ui-exclusion-group='myButtons'></a>
+                  </div>
+
+            </div>
+
+
+
+
+            <div class="row">
+            <div class="col-lg-6">
+
+                        <div class="form-group has-success has-feedback">
+                <label>Origen :</label>
+
+                <select  class="form-control" name="origenmaterial" id="mySelect"
+                 ng-options="contratista.name for contratista in contratistas track by contratista.id"
+
+                 ng-model="contratistaselected"></select>
+
+            </div>
+</div>
+
+            <div class="col-lg-6">
+                            <div class="form-group has-success has-feedback">
+                <label>Tipo :</label>
+
+                <select  class="form-control" name="typematerial" id="mySelect"
+                 ng-options="type.name for type in types track by type.id"
+
+                 ng-model="typematerial"></select>
+
+            </div>
+</div>
+            </div>
+
+
+
+
+            <hr>
+             <label>Control de Stock</label>
+
+             <form class="form-inline">
+             <label>Umbral  Minimo:</label>
+              <!--- <div class="form-group">
+                 <input type="number" style="text-align: right; width: 100px" class="form-control" ng-model="umbralmax" id="exampleInputEmail4" placeholder="0">
+               </div>
+               <label>Minimo: </label>-->
+               <div class="form-group">
+                 <input type="number" style="text-align: right;  width: 100px" class="form-control" ng-model="umbralmin" id="exampleInputEmail25" placeholder="0">
+               </div>
+             </form>
+
+        </fieldset>
+
+
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" ng-click="saveMaterial()">Guardar</a>
+    </div>
+</script>
+
+<script type="text/ng-template" id="contratista_form.html">
+    <div class="modal-header">
+        <h3>Contratista</h3>
+    </div>
+    <div class="modal-body" style="text-align: center">
+        <fieldset>
+
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="name"
+                        class="form-control"
+                        placeholder="Nombre (*)">
+            </div>
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="descript"
+                        class="form-control"
+                        placeholder="Descripción">
+            </div>
+            <h4>Supervisor 1</h4>
+                <form class="form-inline">
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup1.name" id="exampleInputName2" placeholder="Nombre">
+               </div>
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup1.apellido" id="exampleInputEmail23" placeholder="Apellido">
+               </div>
+               </form>
+
+                <form class="form-inline">
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup1.mail" id="exampleInputEmail4" placeholder="E-Mail">
+               </div>
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup1.phone" id="exampleInputEmail25" placeholder="Telefono">
+               </div>
+             </form>
+            <h4>Supervisor 2</h4>
+                <form class="form-inline">
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup2.name" id="exampleInputName2" placeholder="Nombre">
+               </div>
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup2.apellido" id="exampleInputEmail23" placeholder="Apellido">
+               </div>
+               </form>
+
+                <form class="form-inline">
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup2.mail" id="exampleInputEmail4" placeholder="E-Mail">
+               </div>
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup2.phone" id="exampleInputEmail25" placeholder="Telefono">
+               </div>
+             </form>
+            <h4>Supervisor 3</h4>
+                <form class="form-inline">
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup3.name" id="exampleInputName2" placeholder="Nombre">
+               </div>
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup3.apellido" id="exampleInputEmail23" placeholder="Apellido">
+               </div>
+               </form>
+
+                <form class="form-inline">
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup3.mail" id="exampleInputEmail4" placeholder="E-Mail">
+               </div>
+               <div class="form-group">
+                 <input type="text" class="form-control" ng-model="sup3.phone" id="exampleInputEmail25" placeholder="Telefono">
+               </div>
+             </form>
+
+
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" ng-click="saveContratista()">Guardar</a>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="material_type_form.html">
+    <div class="modal-header">
+        <h3>Tipo de Material</h3>
+    </div>
+    <div class="modal-body">
+        <fieldset>
+
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="name"
+                        class="form-control"
+                        placeholder="Nombre">
+            </div>
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="descript"
+                        class="form-control"
+                        placeholder="Descripción">
+            </div>
+
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" ng-click="saveType()">Guardar</a>
+    </div>
+</script>
+
+<script type="text/ng-template" id="rechazo_stock.html">
+    <div class="modal-header">
+        <h3>Nota por rechazo de materiales</h3>
+    </div>
+    <div class="modal-body">
+        <fieldset>
+
+            <textarea class="form-control" ng-model="descript" rows="3"></textarea>
+
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" ng-click="saveDescript()">Guardar</a>
+    </div>
+</script>
+
+<script type="text/ng-template" id="sitio_form.html">
+    <div class="modal-header">
+        <h3>Sitio</h3>
+    </div>
+    <div class="modal-body">
+        <fieldset>
+
+
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="name"
+                        class="form-control"
+                        placeholder="Nombre(*)">
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <input
+                        ng-model="descript"
+                        class="form-control"
+                        placeholder="Descripción">
+            </div>
+
+            <div class="form-group has-success has-feedback">
+            <a ng-show="id!=0" ng-click="editing=true" class="btn btn-success btn-sm">Editar</a>
+            <label ng-show="!editing" >{{ direccion_str  }}</label>
+            <input ng-show="editing" type="text" ng-model="direccion" placeholder="Ingrese direccion aqui (*)" class="form-control" g-places-autocomplete ng-model="myScopeVar" />
+              <!--  <input type="text"  id="Autocomplete" placeholder="Ingrese direccion aqui " class="form-control" ng-autocomplete="result1" ng-change="placeChanged()" on-place-changed="placeChanged(place)" details="details1" options="options1"/>-->
+            </div>
+
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" ng-click="saveSitio()">Guardar</a>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="newUser.html">
+    <div class="modal-header">
+        <h3>Usuario</h3>
+    </div>
+
+    <div class="modal-body">
+    <fieldset>
+
+
+<div class="form-inline">
+    <div class="form-group">
+     <label>Nombre(*)</label>
+     <input
+             ng-model="nombre"
+             class="form-control"
+             placeholder="Nombre">
+    </div>
+
+    <div class="form-group">
+     <label>Apellido</label>
+     <input
+             ng-model="apellido"
+             class="form-control"
+             placeholder="Apellido">
+    </div>
+</div>
+<hr>
+            <div class="form-inline">
+                <div class="form-group">
+                <label>E-Mail(*)</label>
+                <input
+                        ng-model="mail"
+                        class="form-control"
+                        placeholder="eMail">
+               </div>
+
+               <div class="form-group">
+                <label>Telefono</label>
+                <input
+                        ng-model="phone"
+                        class="form-control"
+                        placeholder="Telefono">
+               </div>
+            </div>
+
+<hr>
+
+    <div class="form-group has-success has-feedback">
+     <label>Usuario(*)</label>
+     <input
+             ng-model="user"
+             class="form-control"
+             placeholder="Usuario">
+    </div>
+
+    <div class="form-group has-success has-feedback">
+     <label>Clave(*)</label>
+     <div class="form-inline">
+       <a ng-click="editPass()" class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+      <input
+             type="password"
+             ng-model="pass"
+             class="form-control"
+             placeholder="Clave" ng-disabled="passedite">
+      </div>
+    </div>
+<hr>
+
+            <div class="form-group has-success has-feedback">
+                <label>Perfil :</label>
+
+                <select  class="form-control" name="typematerial" id="mySelect"
+                 ng-options="perfil.name for perfil in perfiles track by perfil.id"
+
+                 ng-model="profileselected"></select>
+
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <label><input ng-model="contratistaenabled" type="checkbox" value=""> Contratista :</label>
+
+                <select ng-show="contratistaenabled==true"  class="form-control" name="typematerialss" id="mySelectContr"
+                 ng-options="contratista.name for contratista in contratistas track by contratista.id"
+                 ng-change="updateCon()"
+                 ng-model="contratistaselected"></select>
+                <label ng-if="contratistaenabled==false">Sin Asigar</label>
+
+            </div>
+
+        </fieldset>
+
+
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" ng-click="saveUser()">Guardar</a>
+    </div>
+</script>
+
+<script type="text/ng-template" id="items_mov.html">
+    <div class="modal-header">
+        <h3>Items Movimiento</h3>
+    </div>
+    <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><a ng-click="sortBy('idCustom')">ID <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('name')"> Nombre <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('descript')"> Descripción <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('cant')"> Cantidad <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in stock | orderBy:propertyName:reverse">
+                        <th>{{ $index +1 }}</th>
+                        <td>{{ item.idCustom }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.descript }}</td>
+                        <td>{{ item.cant }}</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" ng-click="cerrar()">Cerrar</a>
+    </div>
+</script>
+
+<script type="text/ng-template" id="nota_mov.html">
+    <div class="modal-header">
+        <h3>Nota Rechazo Items</h3>
+    </div>
+    <div class="modal-body">
+    <h5>{{nota}}</h5>
+
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-success" ng-click="cerrar()">Cerrar</a>
+    </div>
+</script>
+
+
+ {% endverbatim %}

@@ -1,0 +1,78 @@
+GSPEM\GSPEMBundle\Entity\User:
+    type: entity
+    table: users
+    repositoryClass: GSPEM\GSPEMBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 100
+            nullable: false
+            column: first_name
+        lastName:
+            type: string
+            length: 100
+            nullable: false
+            column: last_name
+        username:
+            type: string
+            length: 50
+            unique: true
+            nullable: false
+        password:
+            type: string
+            length: 50
+        createdAt:
+            type: datetime
+            column: first_login
+        modifiedAt:
+            type: datetime
+            nullable: true
+            column: modified
+        deletedAt:
+            type: datetime
+            nullable: true
+            column: baja
+        disabled:
+            type: boolean
+        mail:
+            type: string
+            length: 200
+            nullable: true
+            column: mail
+        expireDate:
+            type: datetime
+            nullable: true
+            column: expire
+        hidden:
+            type: boolean
+        changePassword:
+            type: boolean
+            column: changepassword
+        lastLogin:
+            type: datetime
+            nullable: true
+            column: lastlogin
+        phone:
+            type: string
+            length: 35
+            nullable: true
+        view:
+            type: integer
+            column: view_type
+            length: 5
+            nullable: true
+        token:
+            type: string
+            length: 100
+        contratista:
+            type: integer
+    lifecycleCallbacks:
+        preUpdate: [ updatedTimestamps ]
+
+

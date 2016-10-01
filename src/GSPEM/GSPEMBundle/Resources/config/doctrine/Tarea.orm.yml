@@ -1,0 +1,34 @@
+GSPEM\GSPEMBundle\Entity\Tarea:
+    type: entity
+    table: tareas
+    repositoryClass: GSPEM\GSPEMBundle\Repository\TareaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            column: id
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+        descript:
+            type: string
+        tecnico:
+            type: integer
+        creador:
+            type: integer
+        inicio:
+            type: datetime
+        fin:
+            type: datetime
+        nota:
+            type: string
+        estado:
+            type: integer
+        sitio:
+            type: integer
+    lifecycleCallbacks: {  }
+
+
+

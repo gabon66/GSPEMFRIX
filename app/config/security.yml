@@ -1,0 +1,45 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+       Symfony\Component\Security\Core\User\User: plaintext
+       #GSPEM\GSPEMBundle\Entity\User: plaintext
+       GSPEM\GSPEMBundle\Entity\User: sha512
+
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, users]
+
+        in_memory:
+            memory:
+                users:
+                    user:  { password: user, roles: [ 'ROLE_USER' ] }
+                    superadmin: { password: superadmin, roles: [ 'ROLE_ADMIN' ] }
+        users:
+            entity: { class: GSPEM\GSPEMBundle\Entity\User, property: username }
+
+    firewalls:
+        # order matters! This must be before the ^/ firewall
+        login_firewall:
+            pattern:   ^/login$
+            anonymous: ~
+
+        secured_area:
+            pattern:    ^/
+            provider : chain_provider
+            form_login: ~
+            logout:
+                    path:   /logout
+            anonymous: ~
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/*, roles:  IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/home*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }

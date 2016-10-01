@@ -1,0 +1,61 @@
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Stock por Sitio<small></small></h2>
+                <div class="clearfix">
+                    <div class="form-group has-success has-feedback">
+                        <!--<select  class="form-control" name="typematerial" id="mySelect"
+                                 ng-options="sitio.name for sitio in sitios track by sitio.id"
+                                 ng-model="sitioselected" ng-change="updateReportSitios()"></select>
+                        -->
+
+                        <select  ng-change="updateReportSitios()" class="form-control"  name="ngvalueselect" ng-model="sitioselected" multiple>
+                            <option ng-repeat="sitio in sitios" ng-value="sitio.id">{{sitio.name}}</option>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+            <div class="x_content" style="height:  60% ;overflow: auto" id="exportable">
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><a ng-click="sortBy('idCustom')">ID <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('namesit')">  Sitio<i class="fa fa-sort" aria-hidden="true"></i> </a> </th>
+
+                        <th><a ng-click="sortBy('name')"> Nombre <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                        <th><a ng-click="sortBy('descript')"> Descripción <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+
+                        <th><a ng-click="sortBy('stock')"> Stock Actual <i class="fa fa-sort" aria-hidden="true"></i> </a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in stock | filter:{name:filtromaterial} | orderBy:propertyName:reverse">
+                        <th>{{ $index +1 }}</th>
+
+
+                        <td>{{ item.idCustom }}</td>
+                        <td>{{ item.namesit }}</td>
+                        <th>{{ item.name }}</th>
+                        <td>{{ item.descript }}</td>
+
+                        <td style="text-align: right">{{ item.stock }}</td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="x_content">
+                <a class="btn btn-success pull-right" ng-click="exportar()">Exportar</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
